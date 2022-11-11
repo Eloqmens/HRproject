@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HR.DAL.Models.Base
 {
-    public abstract class DateStartAndEnd : Person
+    public abstract class DateStartAndEnd : Entity
     {
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }

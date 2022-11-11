@@ -79,46 +79,84 @@ namespace HRproject.Data
             _Logger.LogInformation("Инициализация должностей выполнена за {0} мс", timer.ElapsedMilliseconds);
         }
 
-        private Hospital[] _Hospitals;
-        private const int __HospitalsCount = 10;
-
-        private async Task IntializeHospitals()
-        {
-            var rnd = new Random();
-            _Hospitals = Enumerable.Range(1, __HospitalsCount)
-                .Select(i => new Hospital
-                {
-                    Name = "",
-                    Surname = ,
-                    Patronymic = ,
-                    DateStart,
-                    DateEnd,
-
-                })
-        }
 
         private Employee[] _Employees;
         private const int __EmployeesCount = 1000;
 
-        private async Task IntializeEmployees()
-        {
-            var rnd = new Random();
-            _Employees = Enumerable.Range(1, __EmployeesCount)
-                .Select(i => new Employee
-                {
-                    Name = $"Имя {i}",
-                    Surname = $"Фамилия {i}",
-                    Patronymic = $"Отчество {i}",
-                    Number = rnd.GetRandomNumber(),
-                    Adress = rnd.RandomAddress(),
-                    DateofBirth = rnd.RandomDay(),
-                    Passport = rnd.PassportNumber(),
-                    Department = rnd.NextItem(_Departments),
-                    Position = rnd.NextItem(_Positions),
-                });
+        //private async Task IntializeEmployees()
+        //{
+        //    var rnd = new Random();
+        //    _Employees = Enumerable.Range(1, __EmployeesCount)
+        //        .Select(i => new Employee
+        //        {
+        //            Name = $"Имя {i}",
+        //            Surname = $"Фамилия {i}",
+        //            Patronymic = $"Отчество {i}",
+        //            Number = rnd.GetRandomNumber(),
+        //            Adress = rnd.RandomAddress(),
+        //            DateofBirth = rnd.RandomDay(),
+        //            Passport = rnd.PassportNumber(),
+        //            Department = rnd.NextItem(_Departments),
+        //            Position = rnd.NextItem(_Positions),
+        //        });
 
-            await _db.Employees.AddRangeAsync(_Employees);
-            await _db.SaveChangesAsync();
-        }
+        //    await _db.Employees.AddRangeAsync(_Employees);
+        //    await _db.SaveChangesAsync();
+        //}
+        //private async Task IntializeEmployees()
+        //{
+        //    var rnd = new Random();
+        //    _Employees = new Employee[__EmployeesCount];
+        //    for (var i = 0; i < __EmployeesCount; i++)
+        //        _Employees[i] = new Employee {
+        //            Name = $"Имя {i}",
+        //            Surname = $"Фамилия {i}",
+        //            Patronymic = $"Отчество {i}",
+        //            Number = rnd.GetRandomNumber(),
+        //            Adress = rnd.RandomAddress(),
+        //            DateofBirth = rnd.RandomDay(),
+        //            Passport = rnd.PassportNumber(),
+        //            Department = rnd.NextItem(_Departments),
+        //            Position = rnd.NextItem(_Positions),
+        //        };
+
+        //    await _db.Employees.AddRangeAsync(_Employees);
+        //    await _db.SaveChangesAsync();
+        //}
+
+        private Hospital[] _Hospitals;
+        private const int __HospitalsCount = 10;
+
+        //private async Task IntializeHospitals()
+        //{
+        //    var rnd = new Random();
+        //    _Hospitals = Enumerable.Range(1, __HospitalsCount)
+        //        .Select(i => new Hospital
+        //        {
+        //            DateStart = DateTime.Today,
+        //            DateEnd = DateTime.Today,
+        //            Diagnosis = $"Диагноз {i}",
+        //            Employee = rnd.NextItem(_Employees)
+
+        //        });
+
+        //    await _db.Hospitals.AddRangeAsync(_Hospitals);
+        //    await _db.SaveChangesAsync();
+        //}
+
+        private Vacation[] _Vacations;
+        private const int __VacationsCount = 10;
+
+        //    private async Task IntializeVacations()
+        //    {
+        //        var rnd = new Random();
+        //        _Vacations = Enumerable.Range(1, __VacationsCount)
+        //            .Select(i => new Vacation { 
+        //            DateEnd = DateTime.MaxValue.Date,
+        //            DateStart = DateTime.Today,
+        //            Employee = rnd.NextItem(_Employees)
+        //            });
+        //    }
+
     }
 }

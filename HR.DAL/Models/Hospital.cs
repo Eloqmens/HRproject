@@ -10,7 +10,7 @@ namespace HR.DAL.Models
     public class Hospital : DateStartAndEnd
     {
         public Employee Employee { get; set; }
-        public override string ToString() => $"Больной {Surname} {Name} {Patronymic}, Дата начала {DateStart} Дата завершения {DateEnd}";
+        public override string ToString() => $" Дата начала {DateStart} Дата завершения {DateEnd}";
         public string Diagnosis { get; set; }
     }
 }

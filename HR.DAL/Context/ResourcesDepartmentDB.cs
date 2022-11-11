@@ -15,9 +15,9 @@ namespace HR.DAL.Context
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Vacation> Vacations  { get; set; }
+        public DbSet<Vacation> Vacations { get; set; }
 
-        public ResourcesDepartmentDB(DbContextOptions options) : base(options)
+        public ResourcesDepartmentDB(DbContextOptions<ResourcesDepartmentDB> options) : base(options)
         {
 
         }
