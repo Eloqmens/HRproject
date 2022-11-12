@@ -1,0 +1,31 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:HRproject.ViewModels"
+                    xmlns:view="clr-namespace:HRproject.Views">
+    
+    <DataTemplate DataType="{x:Type Int32Animation}">
+        <TextBlock Text="{Binding StringFormat=int:{0}}"/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type TypeName=vm:EmployeesViewModel}">
+        <view:EmployeesView DataContext="{Binding}"/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type TypeName=vm:DeparmentsViewModel}">
+        <view:DepartmensView DataContext="{Binding}"/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type TypeName=vm:PositionsViewModel}">
+        <view:PositionsView DataContext="{Binding}"/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type TypeName=vm:HospitalsViewModel}">
+        <view:HospitalsView DataContext="{Binding}"/>
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type TypeName=vm:VacationsViewModel}">
+        <view:VacationsView DataContext="{Binding}"/>
+    </DataTemplate>
+    
+    
+</ResourceDictionary>

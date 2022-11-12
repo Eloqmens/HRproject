@@ -7,7 +7,27 @@
         mc:Ignorable="d"
         DataContext="{Binding Path=MainWindowModel, Source={StaticResource ResourceKey=Locator}}"
         Title="{Binding Path=Title}" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+    <DockPanel>
+        <Menu>
+            <MenuItem Header="Сотрудники" Command="{Binding Path=ShowEmployeeViewCommand}"></MenuItem>
+            <MenuItem Header="Отделы" Command="{Binding Path=ShowDepartmentsViewCommand}"></MenuItem>
+            <MenuItem Header="Должность" Command="{Binding Path=ShowPostionsViewCommand}"></MenuItem>
+            <MenuItem Header="Больничный" Command="{Binding Path=ShowHospitalsViewCommand}"></MenuItem>
+            <MenuItem Header="Отпускной" Command="{Binding Path=ShowVacationsViewCommand}"></MenuItem>
+        </Menu>
+        <StatusBar>
+            <StatusBarItem>Готов</StatusBarItem>
+        </StatusBar>
+        <Grid>
+            <Grid.Resources>
+                <ResourceDictionary>
+                    <ResourceDictionary.MergedDictionaries>
+                        <ResourceDictionary Source="../../Templates/ModelMainView.xaml"/>
+                    </ResourceDictionary.MergedDictionaries>
+                </ResourceDictionary>
+            </Grid.Resources>
+            
+            <ContentControl Content="{Binding Path=CurrentModel}"/>
+        </Grid>
+    </DockPanel>
 </Window>

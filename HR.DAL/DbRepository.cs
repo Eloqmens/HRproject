@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HR.DAL
 {
-    internal class DbRepository<T> : IRepository<T> where T : Entity, new()
+    internal partial class DbRepository<T> : IRepository<T> where T : Entity, new()
     {
         private readonly ResourcesDepartmentDB _db;
         private readonly DbSet<T> _Set;

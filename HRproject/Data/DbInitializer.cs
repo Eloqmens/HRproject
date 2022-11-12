@@ -80,8 +80,8 @@ namespace HRproject.Data
         }
 
 
-        private Employee[] _Employees;
-        private const int __EmployeesCount = 1000;
+        //private Employee[] _Employees;
+        //private const int __EmployeesCount = 1000;
 
         //private async Task IntializeEmployees()
         //{
@@ -124,8 +124,8 @@ namespace HRproject.Data
         //    await _db.SaveChangesAsync();
         //}
 
-        private Hospital[] _Hospitals;
-        private const int __HospitalsCount = 10;
+        //private Hospital[] _Hospitals;
+        //private const int __HospitalsCount = 10;
 
         //private async Task IntializeHospitals()
         //{
@@ -144,8 +144,8 @@ namespace HRproject.Data
         //    await _db.SaveChangesAsync();
         //}
 
-        private Vacation[] _Vacations;
-        private const int __VacationsCount = 10;
+        //private Vacation[] _Vacations;
+        //private const int __VacationsCount = 10;
 
         //    private async Task IntializeVacations()
         //    {

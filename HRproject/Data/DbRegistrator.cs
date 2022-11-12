@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using HR.DAL.Context;
 using Microsoft.EntityFrameworkCore;
+using HR.DAL;
 
 namespace HRproject.Data
 {
@@ -13,7 +14,7 @@ namespace HRproject.Data
                 var type = Configuration["Type"];
                 opt.UseSqlServer(Configuration.GetConnectionString(type));
             })
-            
+            .AddRepositoriesInDB()
             ;
     }
 }
