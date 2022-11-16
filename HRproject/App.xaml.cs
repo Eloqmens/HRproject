@@ -13,6 +13,9 @@ namespace HRproject
     /// </summary>
     public partial class App : Application
     {
+
+        public static bool IsDesignTime { get; private set; } = true;
+
         private static IHost __Host;
 
         public static IHost Host => __Host 
@@ -28,11 +31,14 @@ namespace HRproject
         
         protected override async void OnStartup(StartupEventArgs e)
         {
+            IsDesignTime = false;
+
             var host = Host;
 
-            //using (var scope = Services.CreateScope())
-            //    scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync().Wait();
-            
+
+            using (var scope = Services.CreateScope())
+                scope.ServiceProvider.GetRequiredService<DbInitializer>().InitializeAsync().Wait();
+
             base.OnStartup(e);
             await host.StartAsync();
         }

@@ -12,8 +12,6 @@
             <MenuItem Header="Сотрудники" Command="{Binding Path=ShowEmployeeViewCommand}"></MenuItem>
             <MenuItem Header="Отделы" Command="{Binding Path=ShowDepartmentsViewCommand}"></MenuItem>
             <MenuItem Header="Должность" Command="{Binding Path=ShowPostionsViewCommand}"></MenuItem>
-            <MenuItem Header="Больничный" Command="{Binding Path=ShowHospitalsViewCommand}"></MenuItem>
-            <MenuItem Header="Отпускной" Command="{Binding Path=ShowVacationsViewCommand}"></MenuItem>
         </Menu>
         <StatusBar>
             <StatusBarItem>Готов</StatusBarItem>

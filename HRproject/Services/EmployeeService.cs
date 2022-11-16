@@ -11,6 +11,7 @@ namespace HRproject.Services
 {
     class EmployeeService : IEmployeeService
     {
+
         private readonly IRepository<Employee> _Employees;
         private readonly IRepository<Department> _Department;
         private readonly IRepository<Position> _Positions;

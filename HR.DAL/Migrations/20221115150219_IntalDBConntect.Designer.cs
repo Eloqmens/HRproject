@@ -4,14 +4,16 @@ using HR.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HR.DAL.Migrations
 {
     [DbContext(typeof(ResourcesDepartmentDB))]
-    partial class ResourcesDepartmentDBModelSnapshot : ModelSnapshot
+    [Migration("20221115150219_IntalDBConntect")]
+    partial class IntalDBConntect
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,11 +28,16 @@ namespace HR.DAL.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("DepartmentId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
 
                     b.ToTable("Departments");
                 });
@@ -45,9 +52,6 @@ namespace HR.DAL.Migrations
                     b.Property<string>("Adress")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("DateofBirth")
-                        .HasColumnType("datetime2");
-
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
 
@@ -57,9 +61,6 @@ namespace HR.DAL.Migrations
 
                     b.Property<string>("Number")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Passport")
-                        .HasColumnType("int");
 
                     b.Property<string>("Patronymic")
                         .HasColumnType("nvarchar(max)");
@@ -93,7 +94,12 @@ namespace HR.DAL.Migrations
                     b.Property<decimal>("Patch")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<int?>("PositionId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("PositionId");
 
                     b.ToTable("Positions");
                 });
@@ -117,6 +123,13 @@ namespace HR.DAL.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("HR.DAL.Models.Department", b =>
+                {
+                    b.HasOne("HR.DAL.Models.Department", null)
+                        .WithMany("Employee")
+                        .HasForeignKey("DepartmentId");
+                });
+
             modelBuilder.Entity("HR.DAL.Models.Employee", b =>
                 {
                     b.HasOne("HR.DAL.Models.Department", "Department")
@@ -130,6 +143,23 @@ namespace HR.DAL.Migrations
                     b.Navigation("Department");
 
                     b.Navigation("Position");
+                });
+
+            modelBuilder.Entity("HR.DAL.Models.Position", b =>
+                {
+                    b.HasOne("HR.DAL.Models.Position", null)
+                        .WithMany("Employee")
+                        .HasForeignKey("PositionId");
+                });
+
+            modelBuilder.Entity("HR.DAL.Models.Department", b =>
+                {
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("HR.DAL.Models.Position", b =>
+                {
+                    b.Navigation("Employee");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,5 +1,6 @@
 ﻿using HR.DAL.Models;
 using HRproject.Interfaces;
+using HRproject.Services.Interfaces;
 using MathCore.ViewModels;
 using MathCore.WPF.Commands;
 using System.Windows.Input;
@@ -8,13 +9,17 @@ namespace HRproject.ViewModels
 {
     public class MainWindowViewModel : ViewModel
     {
+        private readonly IUserDialog _UserDialog;
+        private readonly IRepository<Employee> _Employee;
+        private readonly IRepository<Department> _Department;
+        private readonly IRepository<Position> _Position;
+
+
         #region Title
         private string _Title = "Отдел Кадров";
 
         public string Title { get => _Title; set => Set(ref _Title, value); }
         #endregion
-
-
         #region CurrentModel : ViewModel - Текущая дочерняя модель-представления
 
         /// <summary>
@@ -45,7 +50,7 @@ namespace HRproject.ViewModels
         /// </summary>
         private void OnShowEmployeeViewCommandExecuted()
         {
-            CurrentModel = new EmployeesViewModel(_Employee);
+            CurrentModel = new EmployeesViewModel(_Employee, _UserDialog);
         }
         #endregion
 
@@ -95,75 +100,25 @@ namespace HRproject.ViewModels
         {
             CurrentModel = new PositionsViewModel(_Position);
         }
-        #endregion
 
 
-        #region Предоставление Больных
-        /// <summary>
-        /// Отобразить прдеставление больных
-        /// </summary>
-        private ICommand _ShowHospitalsViewCommand;
-        /// <summary>
-        /// Отобразить прдеставление больных
-        /// </summary>
-        public ICommand ShowHospitalsViewCommand => _ShowHospitalsViewCommand
-            ??= new LambdaCommand(OnShowHospitalsViewCommandExecuted, CanShowHospitalsViewCommandExecuted);
-        /// <summary>
-        /// Проверка возможности выполнение - Отобразить прдеставлние больных
-        /// </summary>
-        private bool CanShowHospitalsViewCommandExecuted() => true;
-        /// <summary>
-        /// Проверка возможности выполнение - Отобразить прдеставлние больных
-        /// </summary>
-        private void OnShowHospitalsViewCommandExecuted()
-        {
-            CurrentModel = new HospitalsViewModel(_Hospital);
-        }
-        #endregion
-
-
-        #region Предоставление Отпускных
-        /// <summary>
-        /// Отобразить прдеставление отпускных
-        /// </summary>
-        private ICommand _ShowVacationsViewCommand;
-        /// <summary>
-        /// Отобразить прдеставление отпускных
-        /// </summary>
-        public ICommand ShowVacationsViewCommand => _ShowVacationsViewCommand
-            ??= new LambdaCommand(OnShowVacationsViewCommandExecuted, CanShowVacationsViewCommandExecuted);
-        /// <summary>
-        /// Проверка возможности выполнение - Отобразить прдеставлние отпускных
-        /// </summary>
-        private bool CanShowVacationsViewCommandExecuted() => true;
-        /// <summary>
-        /// Проверка возможности выполнение - Отобразить прдеставлние отпускных
-        /// </summary>
-        private void OnShowVacationsViewCommandExecuted()
-        {
-            CurrentModel = new VacationsViewModel(_Vacation);
-        }
         #endregion
 
 
 
-        private IRepository<Employee> _Employee;
-        private IRepository<Department> _Department;
-        private IRepository<Position> _Position;
-        private IRepository<Hospital> _Hospital;
-        private IRepository<Vacation> _Vacation;
-        public MainWindowViewModel(IRepository<Employee> Employee,
+        public MainWindowViewModel(
+            IUserDialog UserDialog,
+            IRepository<Employee> Employee,
             IRepository<Department> Department,
-            IRepository<Position> Position,
-            IRepository<Hospital> Hospital,
-            IRepository<Vacation> Vacation)
+            IRepository<Position> Position
+            
+            )
         {
+            _UserDialog = UserDialog;
             _Employee = Employee;
             _Department = Department;
             _Position = Position;
-            _Hospital = Hospital;
-            _Vacation = Vacation;
-
+            
 
         }
     }

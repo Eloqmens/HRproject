@@ -13,10 +13,8 @@ namespace HR.DAL
     {
         public static IServiceCollection AddRepositoriesInDB(this IServiceCollection services) => services
             .AddTransient<IRepository<Department>, DbRepository<Department>>()          
-            .AddTransient<IRepository<Hospital>, DbRepository<Hospital>>()
             .AddTransient<IRepository<Position>, DbRepository<Position>>()
-            .AddTransient<IRepository<Vacation>, DbRepository<Vacation>>()
-            .AddTransient<IRepository<Employee>, DbRepository<Employee>>()
+            .AddTransient<IRepository<Employee>, EmployeeRepository>()
             ;
     }
 }

@@ -12,12 +12,14 @@ namespace HR.DAL.Context
     {
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Vacation> Vacations { get; set; }
 
         public ResourcesDepartmentDB(DbContextOptions<ResourcesDepartmentDB> options) : base(options)
+        {
+
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 
         }

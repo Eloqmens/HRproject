@@ -10,6 +10,5 @@ namespace HR.DAL.Models
     public class User : NamedEntity
     {
         public string Password { get; set; }
-        public DateTime DatedJoined { get; set; }
     }
 }

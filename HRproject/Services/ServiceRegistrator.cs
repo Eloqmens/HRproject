@@ -1,12 +1,14 @@
-﻿using HRproject.Services.Interfaces;
+﻿using HRproject.Services;
+using HRproject.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace HRproject.Service
 {
     static class ServiceRegistrator
     {
-        public static IServiceCollection AddServices(this IServiceCollection services) => services       
+        public static IServiceCollection AddServices(this IServiceCollection services) => services
             //.AddTransient<IEmployeeService, IEmployeeService>()
+            .AddTransient<IUserDialog, UserDialogService>()
             ;
     }
 }

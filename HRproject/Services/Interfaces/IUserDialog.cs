@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HR.DAL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace HRproject.Services.Interfaces
 {
-    internal interface IEmployeeService
+    public interface IUserDialog
     {
-
+        void Edit(Employee Employee);
     }
 }

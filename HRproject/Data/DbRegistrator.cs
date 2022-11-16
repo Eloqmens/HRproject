@@ -14,6 +14,7 @@ namespace HRproject.Data
                 var type = Configuration["Type"];
                 opt.UseSqlServer(Configuration.GetConnectionString(type));
             })
+            .AddTransient<DbInitializer>()
             .AddRepositoriesInDB()
             ;
     }
