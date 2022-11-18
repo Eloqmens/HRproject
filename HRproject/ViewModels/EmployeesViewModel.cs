@@ -16,21 +16,18 @@ using System.Windows.Input;
 
 namespace HRproject.ViewModels
 {
-    public class EmployeesViewModel : ViewModel
+    class EmployeesViewModel : ViewModel
     {
         private readonly IRepository<Employee> _EmployeesRepository;
         private readonly IUserDialog _UserDialog;
 
-
         public IEnumerable<Employee> ListEmployees => _EmployeesRepository.Items;
-
+          
         public EmployeesViewModel(IRepository<Employee> Employees, IUserDialog UserDialog)
         {
             _EmployeesRepository = Employees;
             _UserDialog = UserDialog;
         }
-
-        
 
         private CollectionViewSource _EmployeeViewSource;
         public ICollectionView EmployeeView => _EmployeeViewSource?.View;

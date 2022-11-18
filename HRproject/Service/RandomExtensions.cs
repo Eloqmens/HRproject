@@ -16,11 +16,10 @@ namespace HRproject.Service
                 throw new ArgumentNullException(nameof(enumerable));
             }
 
-            // note: creating a Random instance each call may not be correct for you,
-            // consider a thread-safe static instance
-            var r = new Random();
+            
+            var rnd = new Random();
             var list = enumerable as IList<T> ?? enumerable.ToList();
-            return list.Count == 0 ? default(T) : list[r.Next(0, list.Count)];
+            return list.Count == 0 ? default(T) : list[rnd.Next(0, list.Count)];
         }
 
         public static DateTime RandomDay(this Random rnd)

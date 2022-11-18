@@ -26,11 +26,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\HR.DAL\HR.DAL.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HR.DAL\HR.DAL.csproj" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

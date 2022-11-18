@@ -3,12 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" mc:Ignorable="d" 
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"     
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors" 
              xmlns:local="clr-namespace:HRproject.Views"
              xmlns:vm="clr-namespace:HRproject.ViewModels"
              xmlns:cm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
              d:DataContext="{d:DesignInstance {x:Type TypeName=vm:EmployeesViewModel}, IsDesignTimeCreatable=True}"
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"> 
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
@@ -19,31 +19,37 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <GroupBox Header="Сотрудники">
-            <GroupBox.Resources>
-                <CollectionViewSource x:Key="EmployeesView"
-                                      Source="{Binding Path=Employees}">
-                    <CollectionViewSource.SortDescriptions>
-                        <cm:SortDescription PropertyName="Name"/>
-                    </CollectionViewSource.SortDescriptions>
-                </CollectionViewSource>
-            </GroupBox.Resources>
-            <DockPanel>
-                <TextBox DockPanel.Dock="Top" Text="{Binding EmployeeFilter, UpdateSourceTrigger=PropertyChanged}"/>
-                <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="3">
-                    <Button Content="Add" Margin="3" Command="{Binding AddNewEmployeeCommand}"/>
-                    <Button Content="Remove" Margin="3" 
+        <DockPanel>
+            <TextBlock DockPanel.Dock="Top" Text="Search" FontSize="15" HorizontalAlignment="Left"></TextBlock>
+            <TextBox DockPanel.Dock="Top" Text="{Binding EmployeeFilter, UpdateSourceTrigger=PropertyChanged}" Width="160" HorizontalAlignment="Left"/>
+            <UniformGrid DockPanel.Dock="Bottom" Rows="1" Margin="3">
+                <Button Content="Add" Margin="3" Command="{Binding AddNewEmployeeCommand}"/>
+                <Button Content="Remove" Margin="3" 
                             Command="{Binding RemoveEmployeeCommand}"
                             CommandParameter="{Binding SelectedBEmployee}"/>
-                </UniformGrid>
-                <ListBox MinWidth="140" ItemsSource="{Binding EmployeeView}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Path=Name}"/>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-            </DockPanel>
-        </GroupBox>
+            </UniformGrid>
+            <GroupBox Header="Список сотрудников" FontSize="13">
+                <GroupBox.Resources>
+                    <CollectionViewSource x:Key="EmployeesView"
+                                      Source="{Binding Path=Employees}">
+                        <CollectionViewSource.SortDescriptions>
+                            <cm:SortDescription PropertyName="Name"/>
+                        </CollectionViewSource.SortDescriptions>
+                    </CollectionViewSource>
+                </GroupBox.Resources>
+                <DataGrid ItemsSource="{Binding EmployeeView}" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Имя" Binding="{Binding Path=Name}"/>
+                        <DataGridTextColumn Header="Фамилия" Binding="{Binding Path=Surname}"/>
+                        <DataGridTextColumn Header="Отчество" Binding="{Binding Path=Patronymic}"/>
+                        <DataGridTextColumn Header="Номер" Binding="{Binding Path=Number}"/>
+                        <DataGridTextColumn Header="Адрес" Binding="{Binding Path=Adress}"/>
+                        <DataGridTextColumn Header="День рождения" Binding="{Binding Path=DateofBirth}"/>
+                        <DataGridTextColumn Header="Отдел" Binding="{Binding Path=Department}"/>
+                        <DataGridTextColumn Header="Должность" Binding="{Binding Path=Position}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </DockPanel>
     </Grid>
 </UserControl>

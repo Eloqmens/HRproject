@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace HRproject.ViewModels
 {
-    public class MainWindowViewModel : ViewModel
+    class MainWindowViewModel : ViewModel
     {
         private readonly IUserDialog _UserDialog;
         private readonly IRepository<Employee> _Employee;

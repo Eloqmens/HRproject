@@ -12,7 +12,7 @@ namespace HRproject.Services
     {
         public void Edit(Employee Employee)
         {
-
+            
         }
     }
 }

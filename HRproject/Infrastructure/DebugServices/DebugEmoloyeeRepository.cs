@@ -18,10 +18,8 @@ namespace HRproject.Infrastructure.DebugServices
                 .Select(i => new Employee
                 {
                     Id = i,
-                    Adress = $"Adress {i}",
                     Name = $"Name {i}",
                     Number = $"Number {i}",
-                    Surname = $"Family {i}",
                     Patronymic = $"Patronymic {i}"
                 }).ToArray();
 
