@@ -20,6 +20,8 @@ namespace HRproject.ViewModels
 
         public string Title { get => _Title; set => Set(ref _Title, value); }
         #endregion
+
+
         #region CurrentModel : ViewModel - Текущая дочерняя модель-представления
 
         /// <summary>

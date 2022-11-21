@@ -8,6 +8,8 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Main.xaml"/>
+                <ResourceDictionary Source="Infrastructure/Commands/AppCommand.xaml"/>
+                <ResourceDictionary Source="Templates/ModelMainView.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <vm:ViewModelLocator x:Key="Locator"/>
         </ResourceDictionary>

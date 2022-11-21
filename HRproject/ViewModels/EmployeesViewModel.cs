@@ -130,12 +130,12 @@ namespace HRproject.ViewModels
         {
             var new_employee = new Employee();
 
-            //if (!_UserDialog.Edit(new_employee))
-            //    return;
+            if (!_UserDialog.Edit(new_employee))
+                return;
 
-            //_Employees.Add(_EmployeesRepository.Add(new_employee));
+            _Employees.Add(_EmployeesRepository.Add(new_employee));
 
-            //SelectedEmployee = new_employee;
+            SelectedEmployee = new_employee;
         }
 
         #endregion
@@ -157,14 +157,14 @@ namespace HRproject.ViewModels
         {
             var employee_remove = p ?? SelectedEmployee;
 
-            //if (!_UserDialog.ConfirmWarning($"Вы хотите удалить книгу {employee_remove.Name}?", "Удаление книги"))
-            //    return;
+            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить книгу {employee_remove.Name}?", "Удаление книги"))
+                return;
 
-            //_EmployeesRepository.Remove(employee_remove.Id);
+            _EmployeesRepository.Remove(employee_remove.Id);
 
-            //Employees.Remove(employee_remove);
-            //if (ReferenceEquals(SelectedEmployee, employee_remove))
-            //    SelectedBook = null;
+            Employees.Remove(employee_remove);
+            if (ReferenceEquals(SelectedEmployee, employee_remove))
+                SelectedEmployee = null;
         }
 
         #endregion

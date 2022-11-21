@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 namespace HR.DAL.Models.Base
 {
     public abstract class NamedEntity : Entity
-    {
-        [Required]
+    {  
         public string Name { get; set; }
     }
 }

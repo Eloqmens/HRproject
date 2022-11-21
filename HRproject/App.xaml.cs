@@ -4,6 +4,7 @@ using HRproject.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace HRproject
@@ -13,6 +14,16 @@ namespace HRproject
     /// </summary>
     public partial class App : Application
     {
+
+        public static Window ActiveWindow => Application.Current.Windows
+            .OfType<Window>()
+            .FirstOrDefault(W => W.IsActive);
+
+        public static Window FocusedWindow => Application.Current.Windows
+            .OfType<Window>()
+            .FirstOrDefault(W => W.IsFocused);
+
+        public static Window CurrentWindow => FocusedWindow ?? ActiveWindow;
 
         public static bool IsDesignTime { get; private set; } = true;
 

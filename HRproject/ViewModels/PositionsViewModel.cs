@@ -6,7 +6,7 @@ namespace HRproject.ViewModels
 {
     class PositionsViewModel : ViewModel
     {
-        private IRepository<Position> _Position;
+        private readonly IRepository<Position> _Position;
 
         public PositionsViewModel(IRepository<Position> Position)
         {

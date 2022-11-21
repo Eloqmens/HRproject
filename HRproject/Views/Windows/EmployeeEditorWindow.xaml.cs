@@ -10,7 +10,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace HRproject.Views.Windows
@@ -18,8 +17,9 @@ namespace HRproject.Views.Windows
     /// <summary>
     /// Логика взаимодействия для EmployeeEditorWindow.xaml
     /// </summary>
-    public partial class EmployeeEditorWindow : Page
+    public partial class EmployeeEditorWindow : Window
     {
+
         public EmployeeEditorWindow()
         {
             InitializeComponent();

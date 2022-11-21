@@ -1,14 +1,13 @@
 ﻿using HR.DAL.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HRproject.Services.Interfaces
 {
-    public interface IUserDialog
+    internal interface IUserDialog
     {
-        void Edit(Employee Employee);
+        bool Edit(Employee Employee);
+
+        bool ConfirmInformation(string Information, string Caption);
+        bool ConfirmWarning(string Warning, string Caption);
+        bool ConfirmError(string Error, string Caption);
     }
 }
