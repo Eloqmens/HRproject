@@ -1,4 +1,5 @@
 ﻿using HR.DAL.Context;
+using HR.DAL.Models;
 using HR.DAL.Models.Base;
 using HRproject.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -15,7 +16,6 @@ namespace HR.DAL
     {
         private readonly ResourcesDepartmentDB _db;
         private readonly DbSet<T> _Set;
-
         public bool AutoSaveChanges { get; set; } = true;
 
         public DbRepository(ResourcesDepartmentDB db)

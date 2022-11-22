@@ -19,7 +19,6 @@ namespace HRproject.Views.Windows
     /// </summary>
     public partial class EmployeeEditorWindow : Window
     {
-
         public EmployeeEditorWindow()
         {
             InitializeComponent();

@@ -12,8 +12,6 @@ namespace HRproject.Infrastructure.DebugServices
     {
         public DebugEmoloyeeRepository()
         {
-
-
             var employees = Enumerable.Range(1, 100)
                 .Select(i => new Employee
                 {

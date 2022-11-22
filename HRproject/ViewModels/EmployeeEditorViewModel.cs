@@ -1,20 +1,23 @@
 ﻿using HR.DAL.Models;
+using HRproject.Interfaces;
 using MathCore.ViewModels;
+using MathCore.WPF.Commands;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Data;
+using System.Windows.Input;
 
 namespace HRproject.ViewModels
 {
     class EmployeeEditorViewModel : ViewModel
     {
-        public int EmployeeId { get; }
+        public Employee Employee { get; set; }
+        public ObservableCollection<Department> Departments { get; set; }
+        public ObservableCollection<Position> Positions { get; set; }
 
+        public int EmployeeId { get; }
         private string _Name;
         private string _Surname;
         private string _Patronymic;
@@ -22,8 +25,8 @@ namespace HRproject.ViewModels
         private string _Number;
         private string _Adress;
         private DateTime _DateofBirth;
-        public Department Department { get; set; }
-        public Position Position { get; set; }
+        private Department _Department;
+        private Position _Position;
 
         public string Name { get => _Name; set => Set(ref _Name, value); }
         public string Surname { get => _Surname; set => Set(ref _Surname, value); }
@@ -32,9 +35,11 @@ namespace HRproject.ViewModels
         public string Number { get => _Number; set => Set(ref _Number, value); }
         public string Adress { get => _Adress; set => Set(ref _Adress, value); }
         public DateTime DateofBirth { get => _DateofBirth; set => Set(ref _DateofBirth, value); }
+        public Department Department { get => _Department; set => Set(ref _Department, value); }
+        public Position Position { get => _Position; set => Set(ref _Position, value); }
 
         public EmployeeEditorViewModel()
-            :this(new Employee {Name = "ЕБУЧИЕИМЯ!" })
+            : this(new Employee { Name = "Name!"})
         {
             if (!App.IsDesignTime)
                 throw new InvalidOperationException("Не для райнтайма");
@@ -53,7 +58,5 @@ namespace HRproject.ViewModels
             Department = employee.Department;
             Position = employee.Position;
         }
-
-        
     }
 }

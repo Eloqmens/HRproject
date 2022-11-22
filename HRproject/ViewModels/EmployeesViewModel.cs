@@ -20,9 +20,7 @@ namespace HRproject.ViewModels
     {
         private readonly IRepository<Employee> _EmployeesRepository;
         private readonly IUserDialog _UserDialog;
-
-        public IEnumerable<Employee> ListEmployees => _EmployeesRepository.Items;
-          
+      
         public EmployeesViewModel(IRepository<Employee> Employees, IUserDialog UserDialog)
         {
             _EmployeesRepository = Employees;
@@ -157,7 +155,7 @@ namespace HRproject.ViewModels
         {
             var employee_remove = p ?? SelectedEmployee;
 
-            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить книгу {employee_remove.Name}?", "Удаление книги"))
+            if (!_UserDialog.ConfirmWarning($"Вы хотите удалить сотрудника {employee_remove.Name}?", "Удаление сотрудника"))
                 return;
 
             _EmployeesRepository.Remove(employee_remove.Id);

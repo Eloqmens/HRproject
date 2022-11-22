@@ -5,9 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:l="clr-namespace:HRproject.Views.Windows"
         xmlns:vm="clr-namespace:HRproject.ViewModels"
+         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         Title="EmployeeEditorWindow" 
         Height="450" Width="350"
         d:DataContext="{d:DesignInstance vm:EmployeeEditorViewModel, IsDesignTimeCreatable=True}">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <DockPanel>
         <TextBlock Text="Новый Сотрудник" DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="0,15,0,10" />
         <UniformGrid Rows="1" DockPanel.Dock="Bottom" Margin="5" HorizontalAlignment="Right">
@@ -27,14 +33,15 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Column="0" Grid.Row="0">
-                <TextBlock  Text="Имя:" VerticalAlignment="Center"/>
-                <TextBlock  Text="Фамилия:" VerticalAlignment="Center"/>
-                <TextBlock  Text="Отчество:" VerticalAlignment="Center"/>
-                <TextBlock  Text="Номер телефона:" VerticalAlignment="Center"/>
-                <TextBlock  Text="Адресс:" VerticalAlignment="Center"/>
-                <TextBlock  Text="Дата рождения:" VerticalAlignment="Center"/>
-                <TextBlock  Text="Отдел:" VerticalAlignment="Center"/>
-                <TextBlock  Text="Должность:" VerticalAlignment="Center"/>
+                <TextBlock  Text="Имя:"/>
+                <TextBlock  Text="Фамилия:"/>
+                <TextBlock  Text="Отчество:"/>
+                <TextBlock  Text="Номер телефона:"/>
+                <TextBlock  Text="Адресс:"/>
+                <TextBlock  Text="Дата рождения:"/>
+                <TextBlock Text="Паспорт"/>
+                <TextBlock  Text="Отдел:"/>
+                <TextBlock  Text="Должность:"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Grid.Row="0">
                 <TextBox  Text="{Binding Name}"/>
@@ -42,11 +49,24 @@
                 <TextBox  Text="{Binding Patronymic}"/>
                 <TextBox  Text="{Binding Number}"/>
                 <TextBox  Text="{Binding Adress}"/>
-                <TextBox  Text="{Binding DateofBirth}"/>
+                <DatePicker  Text="{Binding DateofBirth}"/>
+                <TextBox Text="{Binding Passport}"/>
                 <ComboBox ItemsSource="{Binding Departments}"
-                          DisplayMemberPath="Name"
-                          SelectedItem="{Binding Department}"/>
-                <TextBox  Text="{Binding Position}"/>
+                          SelectedItem="{Binding Employee.Department}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"></TextBlock>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <ComboBox ItemsSource="{Binding Positions}"
+                          SelectedItem="{Binding Employee.Position}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
             </StackPanel>
             
             

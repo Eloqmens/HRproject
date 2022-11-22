@@ -119,9 +119,7 @@ namespace HRproject.ViewModels
             _UserDialog = UserDialog;
             _Employee = Employee;
             _Department = Department;
-            _Position = Position;
-            
-
+            _Position = Position;           
         }
     }
 }
