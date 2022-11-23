@@ -80,7 +80,6 @@ namespace HRproject.ViewModels
         }
         #endregion
 
-
         #region Предоставление Должностей
         /// <summary>
         /// Отобразить прдеставление должностей
@@ -102,8 +101,6 @@ namespace HRproject.ViewModels
         {
             CurrentModel = new PositionsViewModel(_Position);
         }
-
-
         #endregion
 
 
@@ -114,7 +111,7 @@ namespace HRproject.ViewModels
             IRepository<Department> Department,
             IRepository<Position> Position
             
-            )
+            )        
         {
             _UserDialog = UserDialog;
             _Employee = Employee;

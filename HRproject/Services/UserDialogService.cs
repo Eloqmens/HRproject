@@ -1,4 +1,6 @@
-﻿using HR.DAL.Models;
+﻿
+using HR.DAL.Models;
+using HRproject.Interfaces;
 using HRproject.Services.Interfaces;
 using HRproject.ViewModels;
 using HRproject.Views.Windows;
@@ -8,9 +10,19 @@ namespace HRproject.Services
 {
     internal class UserDialogService : IUserDialog
     {
+        private readonly IRepository<Department> _RepositoryDepartment;
+        private readonly IRepository<Position> _RepositoryPositon;
+        public UserDialogService(IRepository<Department> repositoryDepartment, IRepository<Position> repositoryPosition)
+        {
+            _RepositoryDepartment = repositoryDepartment;
+            _RepositoryPositon = repositoryPosition;
+        }
+        public UserDialogService()
+        {
+        }
         public bool Edit(Employee employee)
         {
-            var employee_editor_model = new EmployeeEditorViewModel(employee);
+            var employee_editor_model = new EmployeeEditorViewModel(employee, _RepositoryDepartment, _RepositoryPositon);
 
             var employee_editor_window = new EmployeeEditorWindow
             {

@@ -51,25 +51,13 @@
                 <TextBox  Text="{Binding Adress}"/>
                 <DatePicker  Text="{Binding DateofBirth}"/>
                 <TextBox Text="{Binding Passport}"/>
-                <ComboBox ItemsSource="{Binding Departments}"
-                          SelectedItem="{Binding Employee.Department}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"></TextBlock>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
+                <ComboBox ItemsSource="{Binding DepartmentView}"
+                          SelectedItem="{Binding Department}">
                 </ComboBox>
-                <ComboBox ItemsSource="{Binding Positions}"
-                          SelectedItem="{Binding Employee.Position}">
-                    <ComboBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </ComboBox.ItemTemplate>
+                <ComboBox ItemsSource="{Binding PositionView}"
+                          SelectedItem="{Binding Position}">
                 </ComboBox>
             </StackPanel>
-            
-            
         </Grid>
     </DockPanel>
 </Window>

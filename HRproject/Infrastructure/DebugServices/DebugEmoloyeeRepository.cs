@@ -12,35 +12,35 @@ namespace HRproject.Infrastructure.DebugServices
     {
         public DebugEmoloyeeRepository()
         {
-            var employees = Enumerable.Range(1, 100)
-                .Select(i => new Employee
-                {
-                    Id = i,
-                    Name = $"Name {i}",
-                    Number = $"Number {i}",
-                    Patronymic = $"Patronymic {i}"
-                }).ToArray();
+            //var employees = Enumerable.Range(1, 100)
+            //    .Select(i => new Employee
+            //    {
+            //        Id = i,
+            //        Name = $"Name {i}",
+            //        Number = $"Number {i}",
+            //        Patronymic = $"Patronymic {i}"
+            //    }).ToArray();
 
-            var departments = Enumerable.Range(1, 100)
-                .Select(i => new Department
-                {
-                    Id = i,
-                    Name = $"Department {i}"
-                }).ToArray();
+            //var departments = Enumerable.Range(1, 100)
+            //    .Select(i => new Department
+            //    {
+            //        Id = i,
+            //        Name = $"Department {i}"
+            //    }).ToArray();
 
-            var positions = Enumerable.Range(1, 100)
-                .Select(i => new Position
-                {
-                    Id = i,
-                    Name = $"Position {i}",
-                }).ToArray();
+            //var positions = Enumerable.Range(1, 100)
+            //    .Select(i => new Position
+            //    {
+            //        Id = i,
+            //        Name = $"Position {i}",
+            //    }).ToArray();
 
-            foreach (var emoloyee in employees)
-            {
-                var items = emoloyee.Name.Any();
-            }
+            //foreach (var emoloyee in employees)
+            //{
+            //    var items = emoloyee.Name.Any();
+            //}
 
-            Items = employees.AsQueryable();
+            //Items = employees.AsQueryable();
         }
 
 
